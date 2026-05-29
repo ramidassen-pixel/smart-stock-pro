@@ -1,1 +1,25 @@
+/* ============================================
+   SmartStock Pro — Reset & Base Styles
+   ============================================ */
 
+/* ═══════════════════ RESET ═══════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:var(--ff);
+  background:var(--bg);
+  color:var(--t1);
+  min-height:100%;
+  font-size:14px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior:none;
+}
+button{font-family:var(--ff);cursor:pointer;border:none;background:none;outline:none}
+input,select,textarea{font-family:var(--ff);border:none;outline:none}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--s4);border-radius:99px}
+::selection{background:var(--gd2);color:var(--g)}
+a{color:var(--g);text-decoration:none}
