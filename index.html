@@ -3707,4 +3707,35 @@
     </div>
   </div>
 </div>
+<script>
+  // ── Service Worker Registration ────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(reg) {
+          console.log('[App] SW registered:', reg.scope);
+
+          // Check for updates every 60 minutes
+          setInterval(function() { reg.update(); }, 60 * 60 * 1000);
+
+          // When a new SW is waiting, notify user
+          reg.addEventListener('updatefound', function() {
+            var newWorker = reg.installing;
+            if (!newWorker) return;
+            newWorker.addEventListener('statechange', function() {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New version available — auto-reload
+                console.log('[App] New version available, reloading...');
+                newWorker.postMessage({ type: 'SKIP_WAITING' });
+                window.location.reload();
+              }
+            });
+          });
+        })
+        .catch(function(err) {
+          console.log('[App] SW registration failed:', err.message);
+        });
+    });
+  }
+</script>
 </body></html>
