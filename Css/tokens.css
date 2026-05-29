@@ -1,1 +1,205 @@
+/* ============================================
+   SmartStock Pro — Design Tokens
+   CSS custom properties: colors, fonts, spacing
+   ============================================ */
 
+
+
+/* ════════ APP LOADING SCREEN ════════ */
+#ss-loader {
+  position: fixed; inset: 0; z-index: 99999;
+  background: linear-gradient(135deg, #060810 0%, #0d111c 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+  animation: ssLoaderFadeIn 0.3s ease-out;
+}
+#ss-loader.fade-out {
+  animation: ssLoaderFadeOut 0.5s ease-out forwards;
+}
+.ss-loader-inner {
+  text-align: center;
+  animation: ssLoaderRise 0.6s cubic-bezier(.34, 1.36, .64, 1) both;
+}
+.ss-loader-logo-wrap {
+  margin-bottom: 32px;
+  animation: ssLoaderPulse 2.4s ease-in-out infinite;
+}
+.ss-loader-logo {
+  width: min(58vw, 220px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 40px rgba(34, 197, 94, 0.25))
+          drop-shadow(0 6px 24px rgba(37, 99, 235, 0.18));
+}
+.ss-loader-spinner {
+  display: flex; gap: 7px; justify-content: center;
+  margin-bottom: 22px;
+}
+.ss-loader-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: linear-gradient(135deg, #16a34a 0%, #2563eb 100%);
+  animation: ssLoaderDot 1.2s ease-in-out infinite;
+}
+.ss-loader-dot:nth-child(2) { animation-delay: 0.15s; }
+.ss-loader-dot:nth-child(3) { animation-delay: 0.3s; }
+.ss-loader-tagline {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px; font-weight: 600;
+  color: #94a3b8; letter-spacing: 0.04em;
+}
+.ss-loader-footer {
+  position: absolute;
+  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; font-weight: 600;
+  color: #94a3b8; letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+/* Light theme support — loader stays elegant on light backgrounds too */
+html[data-theme="light"] #ss-loader {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+html[data-theme="light"] .ss-loader-tagline {
+  color: #475569;
+}
+html[data-theme="light"] .ss-loader-logo {
+  filter: drop-shadow(0 12px 40px rgba(0, 99, 65, 0.18))
+          drop-shadow(0 6px 20px rgba(0, 70, 200, 0.12));
+}
+html[data-theme="light"] .ss-loader-footer {
+  color: #64748b;
+}
+
+@keyframes ssLoaderFadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes ssLoaderFadeOut {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+@keyframes ssLoaderRise {
+  from { opacity: 0; transform: translateY(20px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes ssLoaderPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+@keyframes ssLoaderDot {
+  0%, 80%, 100% { transform: scale(0.65); opacity: 0.4; }
+  40%           { transform: scale(1);    opacity: 1; }
+}
+
+/* Loader is always dark — no theme override needed */
+
+/* When app is ready, hide loader */
+body.ss-app-ready #ss-loader {
+  animation: ssLoaderFadeOut 0.5s ease-out forwards;
+}
+
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   SMARTSTOCK PRO — PROFESSIONAL DESIGN SYSTEM
+   Gold × Black Luxury · Mobile-first · Team of 5+
+═══════════════════════════════════════════════════════════════════ */
+
+/* System fonts — works offline on all devices */
+/* Inter is native on Android 12+, falls back gracefully on older */
+
+/* ── DARK THEME TOKENS ── */
+:root{
+  /* Surfaces */
+  --bg:       #060810;
+  --s1:       #0C1020;
+  --s2:       #111828;
+  --s3:       #18203A;
+  --s4:       #1E2844;
+
+  /* Borders */
+  --bd:       rgba(255,255,255,.07);
+  --bd2:      rgba(255,255,255,.12);
+  --bd3:      rgba(255,255,255,.18);
+
+  /* Gold */
+  --g:        #D4A520;
+  --g2:       #E8B830;
+  --g3:       #A07810;
+  --gd:       rgba(212,165,32,.10);
+  --gd2:      rgba(212,165,32,.18);
+  --gd3:      rgba(212,165,32,.06);
+
+  /* Status */
+  --ok:       #22C55E;
+  --okb:      rgba(34,197,94,.12);
+  --okbd:     rgba(34,197,94,.28);
+  --wa:       #F59E0B;
+  --wab:      rgba(245,158,11,.12);
+  --wabd:     rgba(245,158,11,.28);
+  --er:       #EF4444;
+  --erb:      rgba(239,68,68,.12);
+  --erbd:     rgba(239,68,68,.28);
+  --in:       #3B82F6;
+  --inb:      rgba(59,130,246,.12);
+  --inbd:     rgba(59,130,246,.28);
+  --te:       #14B8A6;
+  --teb:      rgba(20,184,166,.12);
+  --tebd:     rgba(20,184,166,.28);
+  --pu:       #A855F7;
+  --pub:      rgba(168,85,247,.12);
+
+  /* Text */
+  --t1: #F0F4FF;
+  --t2: #8892AA;
+  --t3: #505A72;
+  --t4: #2A3348;
+
+  /* Fonts */
+  --ff: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fd: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fm: 'Courier New', 'Lucida Console', monospace;
+
+  /* Radius */
+  --r6:  6px;
+  --r10: 10px;
+  --r14: 14px;
+  --r18: 18px;
+  --r99: 9999px;
+
+  /* Shadows */
+  --sh:  0 2px 8px rgba(0,0,0,.30);
+  --sh2: 0 8px 32px rgba(0,0,0,.45);
+  --sh3: 0 24px 64px rgba(0,0,0,.60);
+  --gsh: 0 4px 24px rgba(212,165,32,.25);
+
+  /* Layout */
+  --topH: 56px;
+  --botH: 64px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── LIGHT THEME TOKENS ── */
+[data-theme="light"]{
+  --bg:  #F0F2F8;
+  --s1:  #FFFFFF;
+  --s2:  #F4F6FC;
+  --s3:  #EAECF5;
+  --s4:  #E0E3EF;
+  --bd:  rgba(30,40,100,.08);
+  --bd2: rgba(30,40,100,.14);
+  --bd3: rgba(30,40,100,.22);
+  --t1:  #0D1117;
+  --t2:  #3D4A6A;
+  --t3:  #7A86A0;
+  --t4:  #B0BAD0;
+  --g:   #B8860A;
+  --g2:  #D4A520;
+  --g3:  #8A6008;
+  --gd:  rgba(184,134,10,.10);
+  --gd2: rgba(184,134,10,.16);
+  --gd3: rgba(184,134,10,.05);
+  --sh:  0 2px 8px rgba(0,0,0,.06);
+  --sh2: 0 8px 24px rgba(0,0,0,.09);
+  --sh3: 0 20px 48px rgba(0,0,0,.12);
+  --gsh: 0 4px 20px rgba(184,134,10,.20);
+}

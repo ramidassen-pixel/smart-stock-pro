@@ -1,2 +1,121 @@
-/* SmartStock Pro — components.css
-   Phase 2 will move content here from index.html */
+/* ============================================
+   SmartStock Pro — Components
+   Cards, buttons, badges, tables, summary bar, list rows
+   ============================================ */
+
+/* ═══════════════════ CARDS ═══════════════════ */
+.card{
+  background:var(--s1);border:1px solid var(--bd);
+  border-radius:var(--r14);overflow:hidden;box-shadow:var(--sh);
+}
+.card-head{
+  padding:13px 16px;border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.card-title{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--t1)}
+
+/* ═══════════════════ SUMMARY BAR (sbar) ═══════════════════ */
+.sbar{
+  background:var(--s1);border:1px solid var(--bd);
+  border-radius:var(--r14);padding:14px 16px;
+  box-shadow:var(--sh);margin-bottom:12px;
+}
+.sbar-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.si{text-align:center}
+.si-l{font-family:var(--fm);font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}
+.si-v{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--t1)}
+.si-v.c-ok{color:var(--ok)}
+.si-v.c-in{color:var(--in)}
+.si-v.c-g{color:var(--g)}
+.si-v.c-er{color:var(--er)}
+.si-v.c-wa{color:var(--wa)}
+
+/* ═══════════════════ LIST ROWS (cr = card row) ═══════════════════ */
+.cr{
+  display:flex;align-items:center;gap:11px;
+  padding:12px 15px;border-bottom:1px solid var(--bd);
+  transition:background .12s;
+}
+.cr:last-child{border-bottom:none}
+.cr.cl{cursor:pointer}
+.cr.cl:active{background:var(--gd3)}
+.ci{
+  width:40px;height:40px;border-radius:var(--r10);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+  background:var(--s2);border:1px solid var(--bd);
+}
+.cb{flex:1;min-width:0}
+.ct{font-size:13px;font-weight:600;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cs{font-size:11px;color:var(--t3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cv{font-family:var(--fd);font-size:15px;font-weight:800;color:var(--t1);flex-shrink:0}
+.cm{font-size:10px;color:var(--t3);margin-top:2px;text-align:right}
+
+/* ═══════════════════ BUTTONS ═══════════════════ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:10px 18px;border-radius:var(--r10);font-size:13px;font-weight:700;
+  cursor:pointer;transition:all .18s;white-space:nowrap;font-family:var(--ff);
+  letter-spacing:.02em;border:1px solid transparent;
+}
+.btn:active{transform:scale(.95)}
+/* Gold/primary */
+.bg{
+  background:linear-gradient(135deg,var(--g),var(--g3));
+  color:#07090F;border-color:var(--g);
+  box-shadow:var(--gsh);
+}
+.bg:active{box-shadow:none}
+/* Ghost */
+.bgh{
+  background:var(--s2);border-color:var(--bd2);color:var(--t2);
+}
+.bgh:active{background:var(--s3)}
+/* Danger */
+.ber{background:var(--erb);border-color:var(--erbd);color:var(--er)}
+/* Success */
+.bok{background:var(--okb);border-color:var(--okbd);color:var(--ok)}
+/* Teal */
+.bte{background:var(--teb);border-color:var(--tebd);color:var(--te)}
+/* Info */
+.bin{background:var(--inb);border-color:var(--inbd);color:var(--in)}
+/* Block */
+.bbl{width:100%;display:flex}
+/* Sizes */
+.bsm{padding:7px 13px;font-size:12px}
+.bxs{padding:4px 10px;font-size:11px;border-radius:var(--r6)}
+/* Margin */
+.mt8{margin-top:8px}
+.mt12{margin-top:12px}
+.mt16{margin-top:16px}
+/* Login button */
+.lbtn{
+  display:flex;align-items:center;justify-content:center;width:100%;
+  padding:16px;border-radius:var(--r14);
+  background:linear-gradient(135deg,var(--g),var(--g3));
+  color:#07090F;font-family:var(--fd);font-size:16px;font-weight:800;
+  box-shadow:var(--gsh);transition:all .18s;border:none;cursor:pointer;
+  letter-spacing:.03em;
+}
+.lbtn:active{transform:scale(.97);box-shadow:none}
+
+/* ═══════════════════ BADGES / TAGS ═══════════════════ */
+.bdg{
+  display:inline-flex;align-items:center;
+  padding:2px 8px;border-radius:99px;
+  font-family:var(--fm);font-size:10px;font-weight:700;
+  white-space:nowrap;letter-spacing:.04em;
+}
+.bok0{background:var(--okb);color:var(--ok);border:1px solid var(--okbd)}
+.bwa0{background:var(--wab);color:var(--wa);border:1px solid var(--wabd)}
+.ber0{background:var(--erb);color:var(--er);border:1px solid var(--erbd)}
+.bin0{background:var(--inb);color:var(--in);border:1px solid var(--inbd)}
+.bdf{background:var(--s3);color:var(--t3);border:1px solid var(--bd2)}
+.bg0{background:var(--gd);color:var(--g);border:1px solid rgba(212,165,32,.3)}
+.bloc{background:rgba(168,85,247,.12);color:var(--pu);border:1px solid rgba(168,85,247,.28)}
+.rb0{
+  padding:2px 9px;border-radius:99px;font-family:var(--fm);font-size:9px;font-weight:700;
+}
+.rpa{background:linear-gradient(135deg,var(--g),var(--g3));color:#07090F}
+.rad{background:var(--inb);color:var(--in);border:1px solid var(--inbd)}
+.rdo{background:var(--okb);color:var(--ok);border:1px solid var(--okbd)}
+.rvi{background:var(--s3);color:var(--t3);border:1px solid var(--bd2)}
